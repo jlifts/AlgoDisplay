@@ -1,6 +1,6 @@
 import React from 'react';
-import './sorting.css';
-import * as SortingAlgorithms from './Algos/Sort';
+import { NavLink } from 'react-router-dom';
+import * as SortingAlgorithms from '../Algos/MergeSort';
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED = 2;
@@ -75,9 +75,9 @@ export default class SortingVisual extends React.Component<{}, any> {
     return (
       <section>
         <div className='nav-container'>
-          <a>
+          <NavLink to='/' exact>
             <h1>Sorting Algorithms</h1>
-          </a>
+          </NavLink>
           <div>
             <button onClick={() => this.reset()}>New Array</button>
             <button onClick={() => this.mergeSort()}>Merge Sort</button>
@@ -86,9 +86,9 @@ export default class SortingVisual extends React.Component<{}, any> {
             <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
             <button onClick={() => this.selectSort()}>Selection Sort</button>
           </div>
-          <a>
+          <NavLink to='/pathfinder' exact>
             <h2>PathFinding Algorithms</h2>
-          </a>
+          </NavLink>
         </div>
         <div className='array-container'>
           {array.array.map((value: number, index: number) => (

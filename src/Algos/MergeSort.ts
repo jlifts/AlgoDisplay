@@ -1,3 +1,4 @@
+// Merge Sort simple algorithm
 export const mergeSort: any = (array: string | any[]) => {
   if (array.length === 1) return array;
   const mid = Math.floor(array.length / 2);
@@ -17,8 +18,8 @@ export const mergeSort: any = (array: string | any[]) => {
   while (j < secondHalf.length) sortedArray.push(secondHalf[j++]);
   return sortedArray;
 };
-// Fix to make more efficient in the future
-
+// Inspired by Clement Mihailescu
+// Animations visual and more efficient merge sort
 export const mergeAnimationSort: any = (array: string[] | any[]) => {
   const animation: any[] = [];
   if (array.length <= 1) return array;
