@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Gridbox from '../components/gridbox';
+import Nav from '../components/Nav';
 import { dijkstra, getNodesInShortestPath } from '../Algos/Dijkstra';
 
 export default class SortingVisual extends React.Component<{}, any> {

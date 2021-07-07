@@ -9,10 +9,10 @@ const ANIMATION_SPEED = 2;
 const ARRAY = 310;
 
 // This is the main color of the array bars.
-const PRIMARY_COLOR = 'turquoise';
+const PRIMARY_COLOR = 'var(--secondary)';
 
 // This is the color of array bars that are being compared throughout the animations.
-const SECONDARY_COLOR = 'red';
+const SECONDARY_COLOR = 'var(--primary)';
 
 export default class SortingVisual extends React.Component<{}, any> {
   constructor(props: any) {

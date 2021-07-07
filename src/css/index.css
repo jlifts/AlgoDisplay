@@ -1,3 +1,11 @@
+:root {
+  --primary: #ff017a;
+  --primary-hover: #ff3a99;
+  --secondary: #2172e5;
+  --font: #fff;
+  --black: #212121;
+  --grey: #2a2a36;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  background-color: var(--grey);
 }
 /* Sorting */
 .array-container {
@@ -19,7 +28,7 @@ body {
   width: 2px;
   display: inline-block;
   margin: 0 1px;
-  background-color: turquoise;
+  background-color: var(--secondary);
 }
 .nav-container {
   display: flex;
@@ -33,30 +42,31 @@ button {
   box-shadow: none;
   border: none;
   border-radius: 4px;
-  background-color: aquamarine;
+  background-color: var(--primary);
   padding: 10px;
   cursor: pointer;
 }
 button:hover {
-  background-color: cadetblue;
+  background-color: var(--primary-hover);
   transform: scale(1.1);
   transition: 0.4s ease-out;
 }
 h1,
 h2 {
   cursor: pointer;
+  color: var(--font);
 }
 a.active {
   text-decoration: none;
-  color: inherit;
+  color: var(--font);
 }
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--font);
 }
 select {
   border: none;
-  background-color: aquamarine;
+  background-color: var(--primary);
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
@@ -64,7 +74,7 @@ select {
   margin: 0 1em;
 }
 select:hover {
-  background-color: cadetblue;
+  background-color: var(--primary-hover);
   transform: scale(1.1);
   transition: 0.4s ease-out;
 }
@@ -79,13 +89,13 @@ select:hover {
 }
 
 .node-finish {
-  background-color: red;
-  /* background-image:  */
+  /* background-color: red; */
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFile%3ABlack_x.svg&psig=AOvVaw203J55FAaghcwpwaN2dIwh&ust=1625767576842000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCIiPtqnG0fECFQAAAAAdAAAAABAI);
 }
 
 .node-start {
-  background-color: green;
-  /* background-image:  */
+  /* background-color: green; */
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AWhite_flag_icon.svg&psig=AOvVaw3ut1isSG_BYjGzO5Of7uZ-&ust=1625767643347000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCNDspsvG0fECFQAAAAAdAAAAABAD);
 }
 
 .node-visited {
