@@ -1,11 +1,11 @@
 import React from 'react';
 import Node from './Node';
-import { dijkstra } from '../Algos/Dijkstra';
-import recursiveMaze from '../Algos/Maze';
+import dijkstra from '../Algos/Dijkstra';
+import recursive from '../Algos/Maze';
 import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { setVisited, setShortest } from '../action';
+import { setAnimating, setVisited, setShortest } from '../action';
 
 let startNode = { row: 20, column: 4 };
 let endNode = { row: 20, column: 27 };
@@ -292,6 +292,9 @@ class TGrid extends React.Component {
       //     this.props.diag
       //   );
       //   break;
+      // case 2:
+      //   response = jumpPointSearch(grid, sn, en);
+      //   break;
       default:
         break;
     }
@@ -372,7 +375,7 @@ class TGrid extends React.Component {
   getResponseFromMaze = (grid) => {
     switch (this.props.maze) {
       case 0:
-        return recursiveMaze(grid, this.props.rows, this.props.columns);
+        return recursive(grid, this.props.rows, this.props.columns);
       default:
         break;
     }
@@ -431,6 +434,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setVisited, setShortest }, null, {
-  forwardRef: true,
-})(TGrid);
+export default connect(
+  mapStateToProps,
+  { setAnimating, setVisited, setShortest },
+  null,
+  {
+    forwardRef: true,
+  }
+)(TGrid);

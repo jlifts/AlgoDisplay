@@ -1,8 +1,8 @@
 const HORIZONTAL = 'horizontal';
 const VERTICAL = 'vertical';
 let addedWalls = [];
-let removedWalls: [] = [];
-const recursiveMaze = (grid: any[][], rows: number, columns: number) => {
+let removedWalls: never[] = [];
+const recursive = (grid: any[][], rows: number, columns: number) => {
   addedWalls = [];
   removedWalls = [];
   for (let i = 0; i < rows; i++) {
@@ -77,4 +77,4 @@ const randomNumber = (max: number, min: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-export default recursiveMaze;
+export default recursive;

@@ -29,8 +29,18 @@ const shortestReducer = (
   }
 };
 
+const heuristicReducer = (
+  heuristic = { 1: 'manhatten' },
+  action: { type: string; payload: any }
+) => {
+  if (action.type === 'CHANGE_HEURISTIC')
+    return { ...heuristic, ...action.payload };
+  return heuristic;
+};
+
 export default combineReducers({
   algo: algoReducer,
   visited: visitedReducer,
   shortest: shortestReducer,
+  heuristic: heuristicReducer,
 });

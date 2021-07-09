@@ -25,3 +25,21 @@ export const clickMaze = (maze?: any) => {
     payload: maze,
   };
 };
+export const changeHeuristic = (heuristic: any) => {
+  return {
+    type: 'CHANGE_HEURISTIC',
+    payload: heuristic,
+  };
+};
+export const animateMaze = (animMaze: any) => {
+  return {
+    type: 'ANIMATE_MAZE',
+    payload: animMaze,
+  };
+};
+export const setAnimating = (isAnim: any) => {
+  return {
+    type: 'SET_ANIMATING',
+    payload: isAnim,
+  };
+};

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
@@ -68,7 +69,7 @@ const AlgoInfoCard = withStyles({
 })(Card);
 
 const AlgoInfo = (props) => {
-  const transition = useTransition(props.algo, null, {
+  const transition = useTransition(props.algo, {
     from: {
       position: 'absolute',
       overflowX: 'hidden',

@@ -86,7 +86,8 @@ export default class SortingVisual extends React.Component<{}, any> {
             <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
             <button onClick={() => this.selectSort()}>Selection Sort</button>
           </div>
-          <NavLink to='/pathfinder' exact>
+          {/* This is coming soon */}
+          <NavLink to='/comingsoon' exact>
             <h2>PathFinding Algorithms</h2>
           </NavLink>
         </div>

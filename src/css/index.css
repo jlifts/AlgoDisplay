@@ -1,7 +1,7 @@
 :root {
-  --primary: #ff017a;
-  --primary-hover: #ff3a99;
-  --secondary: #2172e5;
+  --primary: #ee2fff;
+  --primary-hover: #a521b1;
+  --secondary: rgba(0, 190, 218, 0.75);
   --font: #fff;
   --black: #212121;
   --grey: #2a2a36;
@@ -161,4 +161,26 @@ select:hover {
     transform: scale(1);
     background-color: rgb(255, 254, 106);
   }
+}
+.cs {
+  font-size: 4em;
+  letter-spacing: 0.5rem;
+  color: var(--font);
+}
+.cs-p {
+  color: var(--font);
+}
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 9rem auto;
+}
+.l {
+  color: aquamarine !important;
+}
+.l:hover {
+  color: aliceblue;
+  transform: scale(1.2);
+  transition: 0.2s ease-in-out;
 }
