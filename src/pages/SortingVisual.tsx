@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import * as SortingAlgorithms from '../Algos/MergeSort';
+import * as Merge from '../Algos/MergeSort';
+import * as Quick from '../Algos/QuickSort';
 
 // Change this value for the speed of the animations.
 const ANIMATION_SPEED = 2;
@@ -36,7 +37,7 @@ export default class SortingVisual extends React.Component<{}, any> {
   }
 
   mergeSort() {
-    const animations = SortingAlgorithms.mergeAnimationSort(this.state.array);
+    const animations = Merge.mergeAnimationSort(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const bars = document.getElementsByClassName(
         'array-bar'
@@ -61,7 +62,31 @@ export default class SortingVisual extends React.Component<{}, any> {
     }
   }
 
-  quickSort() {}
+  quickSort() {
+    const animations = Quick.quickAnimationSort(this.state.array);
+    for (let i = 0; i < animations.length; i++) {
+      const bars = document.getElementsByClassName(
+        'array-bar'
+      ) as HTMLCollectionOf<HTMLElement>;
+      const colorChange = i % 3 !== 2;
+      if (colorChange) {
+        const [barOneIndex, barTwoIndex] = animations[i];
+        const barOneStyle = bars[barOneIndex].style;
+        const barTwoStyle = bars[barTwoIndex].style;
+        const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+        setTimeout(() => {
+          barOneStyle.backgroundColor = color;
+          barTwoStyle.backgroundColor = color;
+        }, i * ANIMATION_SPEED);
+      } else {
+        setTimeout(() => {
+          const [barOneIndex, newHeight] = animations[i];
+          const barOneStyle = bars[barOneIndex].style;
+          barOneStyle.height = `${newHeight}px`;
+        }, i * ANIMATION_SPEED);
+      }
+    }
+  }
 
   heapSort() {}
 

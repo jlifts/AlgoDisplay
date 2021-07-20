@@ -1,59 +1,68 @@
 // Quick Sort simple algorithm
-export const quickSort: any = (array: string | any[]) => {
-  if (array.length === 1) return array;
-  const mid = Math.floor(array.length / 2);
-  const firstHalf = quickSort(array.slice(0, mid));
-  const secondHalf = quickSort(array.slice(mid));
-  const sortedArray = [];
-  let i = 0,
-    j = 0;
-  while (i < firstHalf.length && j < secondHalf.length) {
-    if (firstHalf[i] < secondHalf[j]) {
-      sortedArray.push(firstHalf[i++]);
-    } else {
-      sortedArray.push(secondHalf[j++]);
+const pivot = (arr: string | any[] | any, start = 0, end = arr.length + 1) => {
+  const swap = (list: { [x: string]: any }, a: number, b: number) =>
+    ([list[a], list[b]] = [list[b], list[a]]);
+
+  let pivot = arr[start],
+    pointer = start;
+
+  for (let i = start; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      pointer++;
+      swap(arr, pointer, i);
     }
   }
-  while (i < firstHalf.length) sortedArray.push(firstHalf[i++]);
-  while (j < secondHalf.length) sortedArray.push(secondHalf[j++]);
-  return sortedArray;
+  swap(arr, start, pointer);
+
+  return pointer;
+};
+
+export const quickSort = (arr: string | any[], start = 0, end = arr.length) => {
+  let pivotIndex = pivot(arr, start, end);
+
+  if (start >= end) return arr;
+  quickSort(arr, start, pivotIndex);
+  quickSort(arr, pivotIndex + 1, end);
+
+  return arr;
 };
 
 // Animations visual
-export const mergeAnimationSort: any = (array: string[] | any[]) => {
+export const quickAnimationSort: any = (array: string[] | any[]) => {
   const animation: any[] = [];
   if (array.length <= 1) return array;
   const auxArray = array.slice();
-  mergeSortHelper(array, 0, array.length - 1, auxArray, animation);
+  quickSortHelper(array, 0, array.length - 1, auxArray, animation);
   return animation;
 };
-
-function mergeSortHelper(
+// TODO:
+function quickSortHelper(
   mainArray: string[] | any[],
   startIndex: number,
   endIndex: number,
   auxArray: string[] | any[],
   animation: any[]
 ) {
-  if (startIndex === endIndex) return;
-  const middleIndex = Math.floor((startIndex + endIndex) / 2);
-  mergeSortHelper(auxArray, startIndex, middleIndex, mainArray, animation);
-  mergeSortHelper(auxArray, middleIndex + 1, endIndex, mainArray, animation);
-  merge(mainArray, startIndex, middleIndex, endIndex, auxArray, animation);
-}
+  const pivotIndex = pivot(mainArray, startIndex, endIndex);
+  if (startIndex >= endIndex) return;
 
-function merge(
+  quickSortHelper(auxArray, startIndex, pivotIndex, mainArray, animation);
+  quickSortHelper(auxArray, pivotIndex + 1, endIndex, mainArray, animation);
+  quick(mainArray, startIndex, pivotIndex, endIndex, auxArray, animation);
+}
+// TODO:
+function quick(
   mainArray: string[] | any[],
   startIndex: any,
-  middleIndex: number,
+  pivotIndex: number,
   endIndex: number,
   auxArray: string | any[],
   animation: any[]
 ) {
   let k = startIndex;
   let i = startIndex;
-  let j = middleIndex + 1;
-  while (i <= middleIndex && j <= endIndex) {
+  let j = pivotIndex + 1;
+  while (i <= pivotIndex && j <= endIndex) {
     animation.push([i, j]);
     animation.push([i, j]);
     if (auxArray[i] <= auxArray[j]) {
@@ -64,7 +73,7 @@ function merge(
       mainArray[k++] = auxArray[j++];
     }
   }
-  while (i <= middleIndex) {
+  while (i <= pivotIndex) {
     animation.push([i, i]);
     animation.push([i, i]);
     animation.push([k, auxArray[i]]);
